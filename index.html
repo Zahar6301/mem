@@ -32,35 +32,50 @@
   }
 </style>
 </head>
-<body style="background-image: url('https://raw.githubusercontent.com/Zahar6301/mem/main/geto-fon-1.jpg');"> <!-- Укажите путь к изначальному фону -->
+<body>
 <button id="button1" onclick="changeBackgroundAndPlay()">Вам нужен мем, чтобы поднять настроение?</button>
 <button id="button2" onclick="changeBackgroundAndPlay()">Или вам нужно поднять настроение, чтобы мем?</button>
-
-<audio id="audio" loop>
-  <source src="https://raw.githubusercontent.com/Zahar6301/mem/main/video_2024-03-17_23-24-17%20(audio-extractor.net).mp3"> <!-- Укажите путь к аудиофайлу -->
-  Your browser does not support the audio element.
-</audio>
 
 <script>
   function changeBackgroundAndPlay() {
     var body = document.body;
-    var audio = document.getElementById("audio");
     var button1 = document.getElementById("button1");
     var button2 = document.getElementById("button2");
-    // Меняем фон на другую картинку
-    body.style.backgroundImage = "url('https://raw.githubusercontent.com/Zahar6301/mem/main/jujutsu-kaisen-s2.gif')"; // Укажите путь к новому фону
-    // Включаем музыку
-    audio.play();
+
     // Прячем кнопки
     button1.style.display = "none";
     button2.style.display = "none";
-    // Через 5 секунд все возвращается, как было
-    setTimeout(function() {
-      body.style.backgroundImage = "url('https://raw.githubusercontent.com/Zahar6301/mem/main/geto-fon-1.jpg')"; // Укажите путь к изначальному фону
-      audio.pause();
-      button1.style.display = "block";
-      button2.style.display = "block";
-    }, 5500); // 5 секунд
+
+    // Создаем новый экземпляр аудио
+    var audio = new Audio();
+    audio.src = "https://raw.githubusercontent.com/Zahar6301/mem/main/video_2024-03-17_23-24-17%20(audio-extractor.net).mp3"; // Укажите путь к аудиофайлу
+
+    // Создаем новый объект изображения
+    var image = new Image();
+    image.src = "https://raw.githubusercontent.com/Zahar6301/mem/main/jujutsu-kaisen-s2.gif"; // Укажите путь к новому фону
+
+    // Ожидаем загрузки аудиофайла и изображения
+    Promise.all([
+      new Promise((resolve) => audio.addEventListener("loadedmetadata", resolve)),
+      new Promise((resolve) => image.addEventListener("load", resolve))
+    ]).then(() => {
+      // Включаем музыку
+      audio.play();
+
+      // Меняем фон на другую картинку
+      body.style.backgroundImage = "url('https://raw.githubusercontent.com/Zahar6301/mem/main/jujutsu-kaisen-s2.gif')"; // Укажите путь к новому фону
+
+      // Через 5 секунд все возвращается, как было
+      setTimeout(function() {
+        // Возвращаем изначальный фон и останавливаем музыку
+        body.style.backgroundImage = "url('https://raw.githubusercontent.com/Zahar6301/mem/main/geto-fon-1.jpg')"; // Укажите путь к изначальному фону
+        audio.pause();
+        
+        // Показываем кнопки
+        button1.style.display = "block";
+        button2.style.display = "block";
+      }, 5000); // 5 секунд
+    });
   }
 </script>
 
