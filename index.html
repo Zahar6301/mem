@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,36 +20,37 @@
     font-size: 16px;
     margin: 10px;
   }
-  .background1 {
-    background-image: url('https://github.com/Zahar6301/mem/blob/main/geto-fon-1.jpg');
-  }
-  .background2 {
-    background-image: url('https://github.com/Zahar6301/mem/blob/main/jujutsu-kaisen-s2.gif');
-  }
 </style>
 </head>
-<body class="background1">
-
+<body style="background-image: url('https://github.com/Zahar6301/mem/blob/main/geto-fon-1.jpg');"> <!-- Укажите путь к изначальному фону -->
 <button id="button1" onclick="changeBackgroundAndPlay()">Вам нужен мем, чтобы поднять настроение?</button>
 <button id="button2" onclick="changeBackgroundAndPlay()">Или вам нужно поднять настроение, чтобы мем?</button>
 
-<audio id="audio" loop></audio>
+<audio id="audio" loop>
+  <source src="https://github.com/Zahar6301/mem/blob/main/video_2024-03-17_23-24-17%20(audio-extractor.net).mp3"> <!-- Укажите путь к аудиофайлу -->
+  Your browser does not support the audio element.
+</audio>
 
 <script>
   function changeBackgroundAndPlay() {
-    document.body.classList.toggle('background1');
-    document.body.classList.toggle('background2');
-    document.getElementById("button1").style.display = "none";
-    document.getElementById("button2").style.display = "none";
-    document.getElementById("audio").src = "https://github.com/Zahar6301/mem/blob/main/video_2024-03-17_23-24-17%20(audio-extractor.net).mp3"; /* Замените путь на свой */
-    document.getElementById("audio").play();
+    var body = document.body;
+    var audio = document.getElementById("audio");
+    var button1 = document.getElementById("button1");
+    var button2 = document.getElementById("button2");
+    // Меняем фон на другую картинку
+    body.style.backgroundImage = "url('https://github.com/Zahar6301/mem/blob/main/jujutsu-kaisen-s2.gif')"; // Укажите путь к новому фону
+    // Включаем музыку
+    audio.play();
+    // Прячем кнопки
+    button1.style.display = "none";
+    button2.style.display = "none";
+    // Через 5 секунд все возвращается, как было
     setTimeout(function() {
-      document.body.classList.toggle('background1');
-      document.body.classList.toggle('background2');
-      document.getElementById("button1").style.display = "block";
-      document.getElementById("button2").style.display = "block";
-      document.getElementById("audio").pause();
-    }, 120000); // 2 минуты
+      body.style.backgroundImage = "url('C:/Users/%D0%97%D0%B0%D1%85%D0%B5%D1%80/Downloads/mem-geto/geto-fon-1.jpg')"; // Укажите путь к изначальному фону
+      audio.pause();
+      button1.style.display = "block";
+      button2.style.display = "block";
+    }, 5000); // 5 секунд
   }
 </script>
 
