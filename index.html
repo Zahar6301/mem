@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Поднимаем настроение</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+  }
+  .background1 {
+    background-image: url('C:/Users/%D0%97%D0%B0%D1%85%D0%B5%D1%80/Downloads/mem-geto/geto-fon-1.jpg');
+  }
+  .background2 {
+    background-image: url('путь_к_второму_изображению.jpg');
+  }
+</style>
+</head>
+<body class="background1">
+
+<button id="button1" onclick="changeBackgroundAndPlay()">Вам нужен мем, чтобы поднять настроение?</button>
+<button id="button2" onclick="changeBackgroundAndPlay()">Или вам нужно поднять настроение, чтобы мем?</button>
+
+<audio id="audio" loop></audio>
+
+<script>
+  function changeBackgroundAndPlay() {
+    document.body.classList.toggle('background1');
+    document.body.classList.toggle('background2');
+    document.getElementById("button1").style.display = "none";
+    document.getElementById("button2").style.display = "none";
+    document.getElementById("audio").src = "путь_к_аудиофайлу.mp3"; /* Замените путь на свой */
+    document.getElementById("audio").play();
+    setTimeout(function() {
+      document.body.classList.toggle('background1');
+      document.body.classList.toggle('background2');
+      document.getElementById("button1").style.display = "block";
+      document.getElementById("button2").style.display = "block";
+      document.getElementById("audio").pause();
+    }, 120000); // 2 минуты
+  }
+</script>
+
+</body>
+</html>
