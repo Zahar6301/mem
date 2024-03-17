@@ -20,25 +20,21 @@
     font-size: 16px;
     margin: 10px;
   }
-
-  /* Медиа-запрос для мобильных устройств с максимальной шириной 768px */
-  @media only screen and (max-width: 768px) {
-    body {
-      background-size: contain; /* Изменяем размер фона для лучшего отображения на мобильных устройствах */
-    }
-    button {
-      font-size: 14px; /* Уменьшаем размер шрифта кнопок для мобильных устройств */
-    }
-  }
 </style>
 </head>
-<body>
+<body style="background-image: url('https://raw.githubusercontent.com/Zahar6301/mem/main/geto-fon-1.jpg');"> <!-- Укажите путь к изначальному фону -->
 <button id="button1" onclick="changeBackgroundAndPlay()">Вам нужен мем, чтобы поднять настроение?</button>
 <button id="button2" onclick="changeBackgroundAndPlay()">Или вам нужно поднять настроение, чтобы мем?</button>
+
+<audio id="audio" loop>
+  <source src="https://raw.githubusercontent.com/Zahar6301/mem/main/video_2024-03-17_23-24-17%20(audio-extractor.net).mp3"> <!-- Укажите путь к аудиофайлу -->
+  Your browser does not support the audio element.
+</audio>
 
 <script>
   function changeBackgroundAndPlay() {
     var body = document.body;
+    var audio = document.getElementById("audio");
     var button1 = document.getElementById("button1");
     var button2 = document.getElementById("button2");
 
